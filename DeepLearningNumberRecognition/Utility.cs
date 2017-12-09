@@ -30,23 +30,6 @@ namespace DeepLearningNumberRecognition
             }
             return vector;
         }
-        public static double[][] Array3DToArrayOfVectors(int[][][] array)
-        {
-            var vectorArray = new int[array.GetLength(0)][];
-            for(int )
-
-            int position = 0;
-
-            for(int k = 0; k < array.GetLength(0); ++k)
-            {
-                for(int i = 0; i < 28; ++i)
-                {
-                    for(int j = 0; j < 28; ++j)
-                    {
-                        vectorArray
-                    }
-                }
-            }
-        }
+       
     }
 }

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System;
 using System.IO;
-
+using DeepLearningNumberRecognition.Adapter;
 
 namespace DeepLearningNumberRecognition
 {
@@ -15,8 +14,8 @@ namespace DeepLearningNumberRecognition
         {
 
             var reader = new MNISTReader();
-            Console.ReadKey();
-            var x = Utility.Array3DToVector(reader.TestImagesArray, 0);
+            var adapter = new MistToNeutralNetworkAdapter(reader.TestImagesArray, reader.TestImagesLabel);
+            var test = new NeutralNetwork(adapter.ImagesVectorArray, adapter.LabelsArray);
             Console.ReadKey();
             //try
             //{
