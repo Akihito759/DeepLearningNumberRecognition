@@ -13,19 +13,22 @@ namespace DeepLearningNumberRecognition
     {
         static void Main(string[] args)
         {
-            
 
-            try
-            {
-                var test = new DigitImage();
-                test.ShowTestImages(true);
-            }
+            var reader = new MNISTReader();
+            Console.ReadKey();
+            var x = Utility.Array3DToVector(reader.TestImagesArray, 0);
+            Console.ReadKey();
+            //try
+            //{
+            //    var test = new DigitImage();
+            //    test.ShowTestImages(true);
+            //}
 
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.ReadLine();
-            }
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //    Console.ReadLine();
+            //}
         }
 
 

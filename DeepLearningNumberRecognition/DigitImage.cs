@@ -56,7 +56,6 @@ namespace DeepLearningNumberRecognition
             return labelsArray;
         }
 
-
         /// <summary>
         /// Get int[] array of TrainingImagesLabels.
         /// </summary>
@@ -78,6 +77,7 @@ namespace DeepLearningNumberRecognition
             }
             return labelsArray;
         }
+
 
         private void GenerateImages(string labelPath, string imagePath, int maxDi, bool singleSelect = false)
         {
