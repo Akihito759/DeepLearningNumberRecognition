@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using DeepLearningNumberRecognition.Adapter;
+using System.Diagnostics;
 
 namespace DeepLearningNumberRecognition
 {
@@ -12,10 +13,16 @@ namespace DeepLearningNumberRecognition
     {
         static void Main(string[] args)
         {
-
+            var sw = new Stopwatch();
+            sw.Start();
             var reader = new MNISTReader();
-            var adapter = new MistToNeutralNetworkAdapter(reader.TestImagesArray, reader.TestImagesLabel);
-            var test = new NeutralNetwork(adapter.ImagesVectorArray, adapter.LabelsArray);
+            var trainingAdapeter = new MistToNeutralNetworkAdapter(reader.TrainingImagesArray, reader.TrainingImagesLabel, 1000);
+            var testAdapter = new MistToNeutralNetworkAdapter(reader.TestImagesArray, reader.TestImagesLabel, 100);
+            var DDP = new NeutralNetwork();
+            DDP.TrainNetwork(trainingAdapeter.ImagesVectorArray, trainingAdapeter.LabelsArray);
+            DDP.ComputeNetwork(testAdapter.ImagesVectorArray, testAdapter.LabelsArray);
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed);
             Console.ReadKey();
             //try
             //{
@@ -28,6 +35,8 @@ namespace DeepLearningNumberRecognition
             //    Console.WriteLine(ex.Message);
             //    Console.ReadLine();
             //}
+
+
         }
 
 
