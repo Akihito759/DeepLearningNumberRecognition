@@ -43,6 +43,16 @@ namespace DeepLearningNumberRecognition
             };
         }
 
+        public void LoadNetwork(string name)
+        {
+            _network = DeepBeliefNetwork.Load(name);
+        }
+
+        public void SaveNetwork(string name)
+        {
+            _network.Save(name);
+        }
+
         public void TrainNetwork(double[][] input, double[][] output,int epochNumber=5000)
         {
             var layerData = _teacher.GetLayerInput(input);
@@ -67,6 +77,15 @@ namespace DeepLearningNumberRecognition
                 }
             }
             Console.WriteLine($"Total:{input.Length} \n  Err:{err} \n Err(%) ={((double)err / (double)input.Length)*100}%");
+        }
+
+        public void ComputeNetwork(double[][] input)
+        {
+            for (int i = 0; i < input.Length; i++)
+            {
+                var networkOutput = _network.Compute(input[i]);
+                Console.WriteLine(Array.IndexOf(networkOutput, networkOutput.Max()));
+            }
         }
 
 
