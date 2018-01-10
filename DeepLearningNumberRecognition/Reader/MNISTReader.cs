@@ -183,6 +183,44 @@ namespace DeepLearningNumberRecognition
             }
         }
 
+        public void ConsolePrintImage(double[][] image)
+        {
+
+
+            
+                var writer = new StringBuilder(28 * 28 *2);
+
+                for (int i = 0; i < image.Length; ++i)
+                {
+                    for (int j = 0; j < 28*28; ++j)
+                    {
+                        if (image[i][j] == 0)
+                        {
+                            writer.Append(" ");//white
+                        }
+                        else if (image[i][j] == 255) //black
+                        {
+                            writer.Append("0");
+                        }
+                        else
+                        {
+                            writer.Append("."); //grey
+                        }
+                    if (j % 28 == 0)
+                    {
+                        writer.Append("\n");
+                    }
+
+                    }
+                    
+                }
+                
+                Console.WriteLine(writer);
+               
+
+            
+        }
+
     }
 
 }

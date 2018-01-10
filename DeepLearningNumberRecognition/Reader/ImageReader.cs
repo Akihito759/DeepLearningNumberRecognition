@@ -48,23 +48,19 @@ namespace DeepLearningNumberRecognition.Reader
         {
             double[] array = new double[28 * 28];
             int z = 0;
-            for (int i = 0; i < image.Height; i++)
+            for (int i = 0; i < image.Width; i++)
             {
-                for (int j = 0; j < image.Width; j++)
+                for (int j = 0; j < image.Height; j++)
                 {
-                    Color c = image.GetPixel(i, j);
+                    Color c = image.GetPixel(j, i);
 
                     int r = c.R;
                     int g = c.G;
                     int b = c.B;
                     int avg = (r + g + b) / 3;
-                    if(avg == 0)
-                    {
-                        Random rnd = new Random();
-                        avg = avg - rnd.Next(1, 35);
-                    }
+                    
                     array[z++] = 255 - avg; //Make negative        
-                    image.SetPixel(i, j, Color.FromArgb(avg, avg, avg));
+                    image.SetPixel(j, i, Color.FromArgb(avg, avg, avg));
                 }
             }
             //string txt = null;
