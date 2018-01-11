@@ -167,6 +167,7 @@ namespace DeepLearningNumberRecognition
                         else
                         {
                             writer.Append("."); //grey
+
                         }
 
                       
